@@ -18,4 +18,13 @@ export class CarritoComponent implements OnInit {
       this.totalAPagar = importe;
     });
   }
+  deleteItem(cestaItem: CestaItem) {
+    this.serv.deleteProductoArray(cestaItem);
+    this.guardarLocalStorage();
+  }
+
+  guardarLocalStorage() {
+    const arraycesta = this.serv.getProductos();
+    localStorage.setItem('arraycesta', JSON.stringify(arraycesta));
+  }
 }

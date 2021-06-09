@@ -6,15 +6,16 @@ import { CestaItem } from '../interfeces/cesta-item';
   providedIn: 'root',
 })
 export class ServiciosService {
-  productos: CestaItem[];
   private importe$ = new BehaviorSubject<number>(
     localStorage.getItem('importePagar')
       ? parseInt(localStorage.getItem('importePagar'))
       : 0
   );
   importeFina: Observable<number>;
+  productos: CestaItem[] = localStorage.getItem('arraycesta')
+    ? JSON.parse(localStorage.getItem('arraycesta'))
+    : [];
   constructor() {
-    this.productos = [];
     this.importeFina = this.importe$.asObservable();
   }
   // obtenemos la lista de productos
@@ -42,7 +43,7 @@ export class ServiciosService {
     let sumatorio = 0;
     this.productos.forEach((producto: CestaItem) => {
       // esta logica no me parece eficiente. ni usar switch
-      if (producto.id === 'GR1' && producto.cantidad % 0) {
+      if (producto.id === 'GR1') {
         sumatorio += producto.cantidad * producto.precioOferta;
       } else if (producto.id === 'SR1' && producto.cantidad >= 3) {
         sumatorio += producto.cantidad * producto.precioOferta;
@@ -65,5 +66,13 @@ export class ServiciosService {
       sumatorio += producto.precio * producto.cantidad;
     });
     return sumatorio;
+  }
+  deleteProductoArray(item: CestaItem) {
+    // compara el objeto entero y devuelve el indice
+    const index = this.productos.indexOf(item);
+    // quita el producto
+    this.productos.splice(index, 1);
+    // logica para restar el precio
+    this.importeFinal(this.calcularImporteFinal());
   }
 }
