@@ -55,4 +55,11 @@ export class ServiciosService {
   importeFinal(precio) {
     this.importe$.next(precio);
   }
+  importeSindescuento() {
+    let sumatorio = 0;
+    this.productos.forEach((producto: CestaItem) => {
+      sumatorio += producto.precio * producto.cantidad;
+    });
+    return sumatorio;
+  }
 }
