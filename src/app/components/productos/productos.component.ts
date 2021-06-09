@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CestaItem } from 'src/app/interfeces/cesta-item';
+import { Producto } from 'src/app/interfeces/producto';
+import { ServiciosService } from 'src/app/services/servicios.service';
 import { products } from '../../../assets/productos.json';
 @Component({
   selector: 'app-productos',
@@ -7,11 +10,20 @@ import { products } from '../../../assets/productos.json';
 })
 export class ProductosComponent implements OnInit {
   productos;
-  constructor() {
+  constructor(private serv: ServiciosService) {
     this.productos = products;
   }
 
   ngOnInit(): void {}
 
-  agregar() {}
+  agregar(producto: Producto, cantidad: number) {
+    const item: CestaItem = {
+      id: producto.id,
+      cantidad: cantidad,
+      precio: producto.precio,
+      precioOferta: producto.precioOferta,
+      nombre: producto.nombre,
+    };
+    this.serv.agregarProducto(item);
+  }
 }

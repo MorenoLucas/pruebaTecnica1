@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CestaItem } from '../interfeces/cesta-item';
 
 @Injectable({
   providedIn: 'root',
@@ -6,14 +7,15 @@ import { Injectable } from '@angular/core';
 export class ServiciosService {
   productos;
   constructor() {}
+
   getProductos() {
     return this.productos;
   }
-  setProductos(producto) {
+  setProductos(producto: CestaItem[]) {
     this.productos = [...producto];
   }
-  agregarProducto(producto) {
-    const id = this.productos.findIndex((productoParam) => {
+  agregarProducto(producto: CestaItem) {
+    const id = this.productos.findIndex((productoParam: CestaItem) => {
       return this.productos.id === productoParam.id;
     });
     if (id >= 0) {
