@@ -16,10 +16,10 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  agregar(producto: Producto, cantidad: number) {
+  agregar(producto: Producto, cantidad) {
     const item: CestaItem = {
       id: producto.id,
-      cantidad: cantidad,
+      cantidad: parseInt(cantidad),
       precio: producto.precio,
       precioOferta: producto.precioOferta,
       nombre: producto.nombre,

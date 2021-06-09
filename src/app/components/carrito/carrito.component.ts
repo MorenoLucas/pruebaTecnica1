@@ -9,9 +9,13 @@ import { ServiciosService } from 'src/app/services/servicios.service';
 })
 export class CarritoComponent implements OnInit {
   productosCesta: CestaItem[] = [];
+  totalAPagar: number;
   constructor(private serv: ServiciosService) {}
 
   ngOnInit(): void {
     this.productosCesta = this.serv.getProductos();
+    this.serv.importeFina.subscribe((importe) => {
+      this.totalAPagar = importe;
+    });
   }
 }
