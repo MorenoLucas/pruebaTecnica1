@@ -1,4 +1,14 @@
-<p *ngFor="let item of productos">
-  {{ item.nombre }}
-</p>
-<p *ngFor="let item of productos">{{ item.precio }}</p>
+<div class="card" *ngFor="let item of productos">
+  <h3>{{ item.nombre }}</h3>
+  <p>{{ item.precio }}</p>
+  <input
+    onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+    min="1"
+    maxlength="9"
+    type="number"
+    name="cant"
+    value="1"
+    #cant
+  />
+  <button (click)="agregar(item, cant.value)">Agregar</button>
+</div>

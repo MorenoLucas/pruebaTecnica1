@@ -5,8 +5,10 @@ import { CestaItem } from '../interfeces/cesta-item';
   providedIn: 'root',
 })
 export class ServiciosService {
-  productos;
-  constructor() {}
+  productos: CestaItem[];
+  constructor() {
+    this.productos = [];
+  }
 
   getProductos() {
     return this.productos;
@@ -16,7 +18,7 @@ export class ServiciosService {
   }
   agregarProducto(producto: CestaItem) {
     const id = this.productos.findIndex((productoParam: CestaItem) => {
-      return this.productos.id === productoParam.id;
+      return producto.id === productoParam.id;
     });
     if (id >= 0) {
       this.productos[id].cantidad += producto.cantidad;

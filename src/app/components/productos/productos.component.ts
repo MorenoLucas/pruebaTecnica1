@@ -24,6 +24,7 @@ export class ProductosComponent implements OnInit {
       precioOferta: producto.precioOferta,
       nombre: producto.nombre,
     };
+    console.log(item);
     this.serv.agregarProducto(item);
   }
 }
