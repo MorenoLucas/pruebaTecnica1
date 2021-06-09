@@ -1,14 +1,18 @@
-<div class="card" *ngFor="let item of productos">
-  <h3>{{ item.nombre }}</h3>
-  <p>{{ item.precio }}</p>
-  <input
-    onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
-    min="1"
-    maxlength="9"
-    type="number"
-    name="cant"
-    value="1"
-    #cant
-  />
-  <button (click)="agregar(item, cant.value)">Agregar</button>
+<div class="contenedor">
+  <div class="card" *ngFor="let item of productos">
+    <h3 class="titulo">{{ item.nombre }}</h3>
+    <p class="precio">{{ item.precio | currency: "EUR" }}</p>
+
+    <input
+      onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+      min="1"
+      maxlength="9"
+      type="number"
+      name="cant"
+      #cant
+      value="1"
+    />
+
+    <button (click)="agregar(item, cant.value)">Agregar</button>
+  </div>
 </div>
