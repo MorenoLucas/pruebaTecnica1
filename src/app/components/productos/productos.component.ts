@@ -12,4 +12,6 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  agregar() {}
 }
