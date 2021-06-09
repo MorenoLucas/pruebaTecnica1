@@ -17,10 +17,11 @@ export class ServiciosService {
     this.productos = [];
     this.importeFina = this.importe$.asObservable();
   }
-
+  // obtenemos la lista de productos
   getProductos() {
     return this.productos;
   }
+  // establecemos la lista de productos
   setProductos(producto: CestaItem[]) {
     this.productos = [...producto];
   }
@@ -36,6 +37,7 @@ export class ServiciosService {
     }
     this.importeFinal(this.calcularImporteFinal());
   }
+  // calcula el importe final con los descuentos
   calcularImporteFinal() {
     let sumatorio = 0;
     this.productos.forEach((producto: CestaItem) => {
@@ -52,9 +54,11 @@ export class ServiciosService {
     });
     return sumatorio;
   }
+  // va actualizando el precio final
   importeFinal(precio) {
     this.importe$.next(precio);
   }
+  // calcula el importe final sin el descuento
   importeSindescuento() {
     let sumatorio = 0;
     this.productos.forEach((producto: CestaItem) => {
