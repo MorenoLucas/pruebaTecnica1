@@ -36,6 +36,7 @@ export class ServiciosService {
     } else {
       this.productos.push(producto);
     }
+
     this.importeFinal(this.calcularImporteFinal());
   }
   // calcula el importe final con los descuentos
@@ -43,7 +44,7 @@ export class ServiciosService {
     let sumatorio = 0;
     this.productos.forEach((producto: CestaItem) => {
       // esta logica no me parece eficiente. ni usar switch
-      if (producto.id === 'GR1') {
+      if (producto.id === 'GR1' && producto.cantidad % 2 == 0) {
         sumatorio += producto.cantidad * producto.precioOferta;
       } else if (producto.id === 'SR1' && producto.cantidad >= 3) {
         sumatorio += producto.cantidad * producto.precioOferta;

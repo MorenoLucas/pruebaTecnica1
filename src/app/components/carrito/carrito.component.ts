@@ -17,6 +17,7 @@ export class CarritoComponent implements OnInit {
     this.productosCesta = this.serv.getProductos();
     this.serv.importeFina.subscribe((importe) => {
       this.totalAPagar = importe;
+      localStorage.setItem('importePagar', this.totalAPagar.toString());
     });
   }
   borrarItem(cestaItem: CestaItem) {

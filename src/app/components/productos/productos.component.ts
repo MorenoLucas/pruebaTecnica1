@@ -19,7 +19,10 @@ export class ProductosComponent implements OnInit {
   agregar(producto: Producto, cantidad) {
     const item: CestaItem = {
       id: producto.id,
-      cantidad: parseInt(cantidad),
+      cantidad:
+        producto.id === 'GR1' && cantidad % 2 !== 0
+          ? parseInt(cantidad) * 2
+          : parseInt(cantidad),
       precio: producto.precio,
       precioOferta: producto.precioOferta,
       nombre: producto.nombre,
