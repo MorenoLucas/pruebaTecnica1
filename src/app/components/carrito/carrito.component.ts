@@ -18,7 +18,7 @@ export class CarritoComponent implements OnInit {
       this.totalAPagar = importe;
     });
   }
-  deleteItem(cestaItem: CestaItem) {
+  borrarItem(cestaItem: CestaItem) {
     this.serv.deleteProductoArray(cestaItem);
     this.guardarLocalStorage();
   }

@@ -1,2 +1,5 @@
-<p *ngFor="let item of productosCesta">{{ item.cantidad }}-{{ item.nombre }}</p>
+<p *ngFor="let item of productosCesta">
+  {{ item.cantidad }}-{{ item.nombre
+  }}<button (click)="borrarItem(item)">Borrar</button>
+</p>
 <h1>{{ totalAPagar | currency: "EUR" }}</h1>
