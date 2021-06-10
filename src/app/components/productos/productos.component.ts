@@ -17,6 +17,17 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {}
 
   agregar(producto: Producto, cantidad) {
+    let totalAPagar;
+    if (producto.id === 'GR1' && cantidad % 2 == 0) {
+      totalAPagar = producto.precio * producto.precioOferta;
+    } else if (producto.id === 'SR1' && cantidad >= 3) {
+      totalAPagar = producto.precio * producto.precioOferta;
+    } else if (producto.id === 'CF1' && cantidad >= 3) {
+      totalAPagar = producto.precio * producto.precioOferta;
+    } else {
+      totalAPagar = producto.precio * cantidad;
+    }
+
     const item: CestaItem = {
       id: producto.id,
       cantidad:
@@ -26,6 +37,7 @@ export class ProductosComponent implements OnInit {
       precio: producto.precio,
       precioOferta: producto.precioOferta,
       nombre: producto.nombre,
+      total: totalAPagar,
     };
     console.log(item);
     this.serv.agregarProducto(item);

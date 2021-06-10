@@ -4,4 +4,5 @@ export interface CestaItem {
   precio: number;
   precioOferta?: number;
   nombre: string;
+  total?: number;
 }

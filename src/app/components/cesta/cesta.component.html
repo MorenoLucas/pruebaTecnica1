@@ -1,13 +1,51 @@
-<div class="produ" *ngFor="let item of productosFinal">
-  <p>{{ item.cantidad }}-{{ item.nombre }}</p>
-  <h4 *ngIf="item.id == 'GR1' && item.cantidad % 2 == 0">Obtuviste un 2 x 1</h4>
-  <h4 *ngIf="item.id == 'SR1' && item.cantidad >= 3">
-    El precio te quedo en {{ item.precioOferta | currency: "EUR" }}
-  </h4>
-  <h4 *ngIf="item.id == 'CF1' && item.cantidad >= 3">
-    Obtuviste el 2/3 del precio {{ item.precioOferta | currency: "EUR" }}
-  </h4>
-</div>
+<!-- TABLA -->
+<div class="contenedor">
+  <table class="greyGridTable">
+    <thead>
+      <tr>
+        <th>CANTIDAD</th>
+        <th>PRODUCTO</th>
+        <th>PRECIO UNITARIO</th>
+        <th>PRECIO C/DESCUENTO</th>
+        <th>PRECIO TOTAL</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total Sin Descuento</td>
+        <td>{{ totalSinDescuento | currency: "EUR" }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td>{{ totalAPagar | currency: "EUR" }}</td>
+      </tr>
+    </tfoot>
 
-<h1>Total sin Descuento {{ totalSinDescuento | currency: "EUR" }}</h1>
-<h1>Total Final {{ totalAPagar | currency: "EUR" }}</h1>
+    <tbody>
+      <tr *ngFor="let item of productosFinal">
+        <td>{{ item.cantidad }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.precio }}</td>
+        <td>{{ item.precioOferta }}</td>
+        <td>{{ item.total }}</td>
+        <td>
+          <h4 *ngIf="item.id == 'GR1' && item.cantidad % 2 == 0">
+            Obtuviste un 2 x 1
+          </h4>
+          <h4 *ngIf="item.id == 'SR1' && item.cantidad >= 3">
+            Te bajamos €0.5
+          </h4>
+          <h4 *ngIf="item.id == 'CF1' && item.cantidad >= 3">
+            Obtuviste el 2/3 del precio
+          </h4>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

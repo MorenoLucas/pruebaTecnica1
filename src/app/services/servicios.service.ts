@@ -8,7 +8,7 @@ import { CestaItem } from '../interfeces/cesta-item';
 export class ServiciosService {
   private importe$ = new BehaviorSubject<number>(
     localStorage.getItem('importePagar')
-      ? parseInt(localStorage.getItem('importePagar'))
+      ? parseFloat(localStorage.getItem('importePagar'))
       : 0
   );
   importeFina: Observable<number>;
