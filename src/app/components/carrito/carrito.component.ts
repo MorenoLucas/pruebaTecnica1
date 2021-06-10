@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CestaItem } from 'src/app/interfeces/cesta-item';
 import { ServiciosService } from 'src/app/services/servicios.service';
 
@@ -10,7 +11,7 @@ import { ServiciosService } from 'src/app/services/servicios.service';
 export class CarritoComponent implements OnInit {
   productosCesta: CestaItem[] = [];
   totalAPagar: number;
-  constructor(private serv: ServiciosService) {}
+  constructor(private serv: ServiciosService, private router: Router) {}
 
   ngOnInit(): void {
     this.productosCesta = this.serv.getProductos();
@@ -26,5 +27,8 @@ export class CarritoComponent implements OnInit {
   guardarLocalStorage() {
     const arraycesta = this.serv.getProductos();
     localStorage.setItem('arraycesta', JSON.stringify(arraycesta));
+  }
+  goCesta() {
+    this.router.navigateByUrl('/cesta');
   }
 }
