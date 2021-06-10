@@ -67,7 +67,7 @@ export class ServiciosService {
     });
     return sumatorio;
   }
-  deleteProductoArray(item: CestaItem) {
+  borrarProductoArray(item: CestaItem) {
     // compara el objeto entero y devuelve el indice
     const index = this.productos.indexOf(item);
     // quita el producto

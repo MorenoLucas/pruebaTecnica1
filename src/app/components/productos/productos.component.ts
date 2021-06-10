@@ -26,6 +26,7 @@ export class ProductosComponent implements OnInit {
     };
     console.log(item);
     this.serv.agregarProducto(item);
+    this.guardarLocalStorage();
   }
   guardarLocalStorage() {
     const arraycesta = this.serv.getProductos();

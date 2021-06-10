@@ -19,7 +19,7 @@ export class CarritoComponent implements OnInit {
     });
   }
   borrarItem(cestaItem: CestaItem) {
-    this.serv.deleteProductoArray(cestaItem);
+    this.serv.borrarProductoArray(cestaItem);
     this.guardarLocalStorage();
   }
 
