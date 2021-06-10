@@ -1,6 +1,68 @@
-<p *ngFor="let item of productosCesta">
-  {{ item.cantidad }}-{{ item.nombre
-  }}<button (click)="borrarItem(item)">Borrar</button>
-</p>
-<h1>{{ totalAPagar | currency: "EUR" }}</h1>
-<button (click)="goCesta()">Comprar</button>
+<div
+  class="container flex flex-col mx-auto w-full items-center justify-center"
+  *ngIf="productosCesta.length >= 1"
+>
+  <ul class="flex flex-col">
+    <li
+      class="border-gray-400 flex flex-row mb-2"
+      *ngFor="let item of productosCesta"
+    >
+      <div
+        class="
+          shadow
+          border
+          select-none
+          cursor-pointer
+          bg-white
+          dark:bg-gray-800
+          rounded-md
+          flex flex-1
+          items-center
+          p-4
+        "
+      >
+        <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
+          <p href="#" class="block relative">{{ item.cantidad }}</p>
+        </div>
+        <div class="flex-1 pl-1 md:mr-16">
+          <div class="font-medium dark:text-white">
+            {{ item.nombre }}
+            <a (click)="borrarItem(item)">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </div>
+          <div class="text-gray-600 dark:text-gray-200 text-sm">
+            <p *ngIf="item.id == 'GR1' && item.cantidad % 2 == 0">
+              Obtuviste un 2 x 1
+            </p>
+            <p *ngIf="item.id == 'SR1' && item.cantidad >= 3">
+              Te bajamos €0.5
+            </p>
+            <p *ngIf="item.id == 'CF1' && item.cantidad >= 3">
+              Obtuviste el 2/3 del precio
+            </p>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button
+    (click)="goCesta()"
+    class="
+      px-6
+      py-2
+      transition
+      ease-in
+      duration-200
+      uppercase
+      rounded-full
+      hover:bg-gray-500
+      hover:text-white
+      border-2 border-gray-900
+      focus:outline-none
+      m-1
+    "
+  >
+    Comprar
+  </button>
+</div>
