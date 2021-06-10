@@ -4,28 +4,6 @@
   justify-content: space-around;
   margin: 5em;
 }
-.card {
-  display: grid;
-  grid-template-columns: repeat(6, auto);
-  grid-template-rows: repeat(6, auto);
-  justify-content: center;
-  width: 25vw;
-}
-.titulo {
-  grid-column: 1 / span 6;
-  justify-self: center;
-}
-.precio {
-  grid-row: 2;
-  grid-column: 4 / span 2;
-}
-input {
-  grid-row: 5;
-  width: 30px;
-  margin-bottom: 1em;
-}
-button {
-  grid-row: 6;
-  grid-column: 3;
-  justify-self: center;
+#email {
+  width: 4em;
 }
