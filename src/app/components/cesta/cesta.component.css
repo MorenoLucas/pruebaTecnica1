@@ -1,8 +1,9 @@
 table.greyGridTable {
-  border: 7px solid #ffffff;
+  /* border: 7px solid #ffffff; */
   width: 75vw;
   text-align: center;
   border-collapse: collapse;
+  grid-area: area;
 }
 table.greyGridTable td,
 table.greyGridTable th {
@@ -46,4 +47,12 @@ table.greyGridTable tfoot td {
   grid-template-rows: auto;
   justify-content: center;
   margin-top: 100px;
+  grid-template-areas: "area";
+}
+.pagado {
+  grid-column: 1;
+  grid-row: 1;
+  grid-area: area;
+  justify-self: center;
+  width: 30vw;
 }

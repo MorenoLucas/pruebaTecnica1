@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServiciosService } from 'src/app/services/servicios.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class CestaComponent implements OnInit {
   totalAPagar: number;
   productosFinal;
   totalSinDescuento: number;
-  constructor(private serv: ServiciosService) {}
+  pagado: boolean = false;
+  constructor(private serv: ServiciosService, private router: Router) {}
 
   ngOnInit(): void {
     this.productosFinal = this.serv.getProductos();
@@ -18,5 +20,11 @@ export class CestaComponent implements OnInit {
       this.totalAPagar = importe;
     });
     this.totalSinDescuento = this.serv.importeSindescuento();
+  }
+  pagar() {
+    this.pagado = true;
+  }
+  goHome() {
+    this.router.navigateByUrl('/');
   }
 }
