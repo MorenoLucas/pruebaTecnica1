@@ -1,8 +1,9 @@
 .contenedor {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   justify-content: space-around;
-  margin: 5em;
+  align-content: center;
+  margin: 2em;
 }
 #email {
   width: 4em;

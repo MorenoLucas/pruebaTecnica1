@@ -1,27 +1,32 @@
 <div class="contenedor">
   <div
-    class="shadow-lg rounded-2xl bg-white w-50 p-2 m-4"
+    class="shadow-lg rounded-2xl bg-white w-60 p-2 m-4"
     *ngFor="let item of productos"
   >
-    <!-- <img src="/images/object/3.png" alt="adidas" class="w-32 p-4 h-36 m-auto" /> -->
+    <img
+      src="../../../assets/{{ item.img }}"
+      alt="adidas"
+      class="w-32 p-4 h-32 m-auto"
+    />
     <div class="bg-gray-200 m-3 p-4 rounded-lg">
       <p class="text-xl font-bold">{{ item.nombre }}</p>
-      <p class="text-gray-50 text-xs" *ngIf="item.id === 'GR1'">
+      <p class="text-green-500 text-xs" *ngIf="item.id === 'GR1'">
         PROMOCIÓN 2x1
       </p>
-      <p *ngIf="item.id === 'SR1'" class="text-gray-50 text-xs">
+      <p *ngIf="item.id === 'SR1'" class="text-green-500 text-xs">
         Llevando 3 o más, el precio queda en
         {{ item.precioOferta | currency: "EUR" }}
       </p>
-      <p *ngIf="item.id === 'CF1'" class="text-gray-50 text-xs">
+      <p *ngIf="item.id === 'CF1'" class="text-green-500 text-xs">
         Llevando 3 o más, el precio queda en
         {{ item.precioOferta | currency: "EUR" }}
       </p>
-      <div class="flex items-center justify-between m-3">
-        <p class="">{{ item.precio | currency: "EUR" }}</p>
+      <div class="flex items-center justify-between">
+        <p class="m-2">{{ item.precio | currency: "EUR" }}</p>
         <input
           id="email"
           class="
+            m-2
             rounded-lg
             border-transparent
             appearance-none
