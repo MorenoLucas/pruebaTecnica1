@@ -21,6 +21,7 @@ export class CestaComponent implements OnInit {
     });
     this.totalSinDescuento = this.serv.importeSindescuento();
   }
+
   pagar() {
     this.pagado = true;
   }

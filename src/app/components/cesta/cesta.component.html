@@ -71,7 +71,9 @@
         <td>{{ item.cantidad }}</td>
         <td>{{ item.nombre }}</td>
         <td>{{ item.precio }}</td>
-        <td>{{ item.precioOferta }}</td>
+        <td>
+          {{ item.precioOferta }}
+        </td>
         <td>{{ item.total }}</td>
         <td>
           <h4 *ngIf="item.id == 'GR1' && item.cantidad % 2 == 0">
