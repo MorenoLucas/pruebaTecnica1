@@ -46,12 +46,16 @@ export class ServiciosService {
       // esta logica no me parece eficiente. ni usar switch
       if (producto.id === 'GR1' && producto.cantidad % 2 == 0) {
         sumatorio += producto.cantidad * producto.precioOferta;
+        producto.total = producto.cantidad * producto.precioOferta;
       } else if (producto.id === 'SR1' && producto.cantidad >= 3) {
         sumatorio += producto.cantidad * producto.precioOferta;
+        producto.total = producto.cantidad * producto.precioOferta;
       } else if (producto.id === 'CF1' && producto.cantidad >= 3) {
         sumatorio += producto.cantidad * producto.precioOferta;
+        producto.total = producto.cantidad * producto.precioOferta;
       } else {
         sumatorio += producto.precio * producto.cantidad;
+        producto.total = producto.cantidad * producto.precio;
       }
     });
     return sumatorio;
